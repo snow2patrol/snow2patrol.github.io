@@ -1,151 +1,210 @@
-## moonwalk - a fast and minimalistic blog theme with clean dark mode
+# Neumorphism <!-- omit in toc -->
 
-<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/moonwalk.png" />
+> Neumorphism designed Jekyll theme for personal websites, portfolios and resumes.
 
-<h3 align="center">
-  <img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/logo.png" width="24"/>
-<a href="https://abhinavs.github.io/moonwalk/">TRY THE DEMO</a>
-</h3>
+* Featured on [JAMstack Themes](https://jamstackthemes.dev/theme/jekyll-neumorphism/)
+* Featured on [Jekyll Themes](https://jekyll-themes.com/neumorphism/)
+* Featured on [jekyllthemes](http://jekyllthemes.org/themes/neumorphism/)
 
-## Features
-* Light & dark mode with theme switcher
-* Vertical list, horizontal list, card list
-* Landing page with navbar, footer, portfolio
-* Fast (very minimal CSS) - 100/100 on performance, accessibility, best practices and SEO, please see [Lighthouse Report](https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/lighthouse-report.png) for more details
-* Responsive and mobile friendly
-* SEO optimized (uses [Jekyll Soopr SEO Tag](https://github.com/jekyll/jekyll-soopr-seo-tag))
-* RSS feed (uses [Jekyll Feed](https://github.com/jekyll/jekyll-feed))
-* Easy to extend
-* Fully compatible with [GitHub Pages](https://pages.github.com/) (see [GitHub Pages installation](#github-pages-installation))
-* Auto-generated share images for social media (using [Soopr](https://www.soopr.co))
-* Share & like buttons (using [Soopr](https://www.soopr.co))
+[![Open Issues](https://badgen.net/github/open-issues/longpdo/neumorphism)](https://github.com/longpdo/neumorphism/issues)
+[![License](https://badgen.net/github/license/longpdo/neumorphism)](LICENSE)
+<a href="https://jekyll-themes.com">
+    <img src="https://img.shields.io/badge/featured%20on-JT-red.svg" height="20" alt="Jekyll Themes Shield" >
+</a>
 
+[View Demo](https://longpdo.github.io/neumorphism/) · [Report Bug](https://github.com/longpdo/neumorphism/issues) · [Request Feature](https://github.com/longpdo/neumorphism/issues)
 
-#### Lighthouse
+<!-- TABLE OF CONTENTS -->
+## Table of Contents <!-- omit in toc -->
 
-<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/lighthouse-report.png" />
+* [About The Project](#about-the-project)
+  * [Built With](#built-with)
+  * [Features](#features)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+  * [Personalize and Customize](#personalize-and-customize)
+    * [_config.yml](#_configyml)
+    * [Github Metadata Plugin](#github-metadata-plugin)
+    * [_data/*.yml](#_datayml)
+    * [Particles.js](#particlesjs)
+* [Contributing](#contributing)
+* [License](#license)
+* [Acknowledgements](#acknowledgements)
 
-## Quick Installation
-1. [Fork this repository](https://github.com/abhinavs/moonwalk/fork).
-2. `cd moonwalk`
-3. `bin/bootstrap`
-4. [Optional] Sign up on Soopr, and add your `publish_token` in `_config.yml` file.
+<!-- ABOUT THE PROJECT -->
 
-If you are installing Moonwalk on Windows, please note that you might have to use Ruby 3.0.x instead of Ruby 3.1.x - you can see Windows specific installation instructions [here](https://github.com/abhinavs/moonwalk/blob/master/moonwalk_on_windows.md)
+## About The Project
 
-## Starting Server
-`bin/start` - development server will start at http://127.0.0.1:4000
+[![Project Screenshot][product-screenshot]](https://longpdo.github.io/neumorphism/)
 
-## Deployment
-Moonwalk can be easily deployed on all the cloud providers (AWS etc.), and on static website hosting services like Netlify & Vercel. You can also use this button to do one click deploy
-<br />
-<br />
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/abhinavs/moonwalk)
+This is a personal website built with `Jekyll` and hosted on `Github Pages`, which is based on the new `Neumorphism` design trend and was developed with a mobile-first approach. This can be used by developers, who want to showcase their resume and portfolio. If you want to use this for your own website, fork this repository and then refer to [personalize and customize](#personalize-and-customize).
 
-If you want to use Moonwalk as a gem or use Github Pages, please see [this page](https://github.com/abhinavs/moonwalk/blob/master/github_pages.md)
+### Built With
 
-## Customizing
+* [Jekyll](https://jekyllrb.com/)
 
-You can edit `_config.yml` file to customize your blog. You can change things such as the name of the blog, the author, the appearance of the theme (light, dark or auto), how dates are formatted, etc. Customizable fields should be straightforward to understand. Still, `_config.yml` contains some comments to help you understand what each field does.
+### Features
 
-For further customization (e.g. layout, CSS) see the [official Jekyll's documentation](https://jekyllrb.com/docs/themes/#overriding-theme-defaults) on customizing gem-based themes.
+* Mobile-First Responsive Design
+* Animated preloader animation
+* Landing Page with animated background with [particles.js](https://vincentgarreau.com/particles.js/), a Typing Carousel and animated social icons
+* Dark Neumorphism Design on main content
+* [Animations On Scroll](https://michalsnik.github.io/aos/)
+* Filterable *Skills* word cloud
+* [Github's API](https://developer.github.com/v3/) automatically populating the *Open Source Projects* section
+* Gulp dev workflow with [BrowserSync](https://browsersync.io/), [Autoprefixer](https://autoprefixer.github.io/) and `JS` & `SCSS` minifying.
+* [Google Analytics](https://analytics.google.com/)
 
-### Customize the menu
+<!-- GETTING STARTED -->
 
-In order to add/edit/delete entries in the home page, you can copy the `home.yml` file inside `_data` folder. Through that file you can define the structure of the menu and add data for navbar, footer, portfolio or simply remove all of that and use simple blog layout. Take a look at the default configuration to get an idea of how it works and read on for a more comprehensive explaination.
+## Getting Started
 
-The `home.yml` file accepts the following fields:
+To get a local copy up and running follow these simple steps.
 
-1. Vertical list
-  - `entries` define a new unordered list that will contain menu entries
-  - each entry is marked by a `-` at the beginning of the line
-  - each entry has the following attributes:
-    - `title`, which defines the text to render for that menu entry
-    - `url`, which can either be a URL or `false`. If it is `false`, the entry will be rendered as plain text; otherwise the entry will be rendered as a link pointing to the specified URL. Note that the URL can either be relative or absolute.
-    - `post_list`, which can be `true` or `false`. If it is true, the entry will have all posts in the site as subentries. This is used to render your post list.
-    - `entries`, yes, you can have entries inside entries. In this way you can create nested sublists!
-2. Card list - cards are used to showcase portfolio projects. Please see `project_entries` in `_data/home.yml` file
-  - each entry is marked by a `-` at the beginning of the line
-  - each entry has the following attributes:
-    - `title` defines the header of the card
-    - `desc` is the body of the card
-    - `url` is a relative or absolute link which this card can point to.
-    - `highlight` in case you want to highlight something, keep the text short though
-3. Horizontal list - moonwalk uses horizontal lists to create navbar and footer. Please see `navbar_entries` and `footer_entries` in `data/home.yml` file
-  - each entry is marked by a `-` at the beginning of the line
-  - each entry has the following attributes:
-    - `title` defines the header of the card
-    - `url` is a relative or absolute link which this card can point to.
+`The commands and instructions I provide are for MacOS - please look up the specific commands for your OS on your own.`
 
+### Prerequisites
 
-### Pro tips
-1. Moonwalk has 3 in-built layouts:
-  - post - for content
-  - blog - for listing blog posts
-  - home - for landing page
-  you can change your `index.md` file to use either home or blog layout.
+* [NodeJS](https://nodejs.org/en/)
 
-2. It is extremely easy to tweak the color scheme. 
-  - for light mode, customize these css variables
-```css
-html {
-    --bg: #fff;
-    --bg-secondary: #f8f9fa;
-    --headings: #000;
-    --text: #333;
-    --links: blue;
-    --highlight: #ffecb2; // light yellow
-}
+```sh
+brew install node
 ```
-  - for dark mode customize these css variables
-```css
-@mixin dark-appearance {
-  html, body  {
-      --bg: #1f242A;
-      --bg-secondary: #323945;
-      --headings: #3D9970;
-      --text: #adb5bd;
-      --links: #91a7ff;
-      --highlight: #ffd8a8;
-      --highlight: #ffd43b;
-  };
-}
-```
-3. Sign up for free on [Soopr](https://www.soopr.co) and add your `publish_token` in `_config.yml` file - with this, each page gets short URL, like button and auto generated share image for social media.
 
-<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/twitter_card.png" />
+If you need to switch between Node versions regurlarly, I would recommend to install Node via [Node Version Manager](https://github.com/nvm-sh/nvm/blob/master/README.md#manual-install).
+
+* [Jekyll](https://jekyllrb.com/)
+
+```sh
+gem install bundler jekyll
+```
+
+For more information, refer to [this](https://jekyllrb.com/docs/installation/).
+
+* [Yarn](https://yarnpkg.com/)
+
+```sh
+npm install -g yarn
+```
+
+### Installation
+
+> Recommended way: If you want to contribute to this theme or open issues due to problems implementing this on your own, I would recommend forking the repository directly. This makes it easier for me to solve open issues and questions or check pull requests.
+
+1.1: Fork the repository (using the `Fork` button at the top) and then clone the repository
+
+```sh
+# Replace {YOUR_USERNAME} with your actual username
+git clone https://github.com/{YOUR_USERNAME}/neumorphism.git
+```
+
+or
+
+1.2: Create your own repository (using the green `Use this template` button at the top) and then clone the repository
+
+```sh
+# Replace {YOUR_USERNAME}, {YOUR_REPOSITORY} with the actual values
+git clone https://github.com/{YOUR_USERNAME}/{YOUR_REPOSITORY}.git
+```
+
+2: Change directory into neumorphism
+
+```sh
+cd neumorphism
+```
+
+3: Install dependencies
+
+```sh
+yarn
+bundle install
+```
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+* Run and develop locally with live server at `http://localhost:4000`, this will also build production-ready `JS` and `SCSS` assets with every change
+
+```sh
+gulp
+```
+
+* After committing and pushing, see the `Settings` page of your repository to see where your site is published at via `Github Pages`.
+
+### Personalize and Customize
+
+#### _config.yml
+
+Edit `_config.yml` to personalize your site. For documentation, refer to [docs/config.md](https://github.com/longpdo/neumorphism/blob/master/docs/config.md).
+
+#### Github Metadata Plugin
+
+If you want to automatically have your Github repositories pulled for the *Open Source Projects* section, then you also need to authenticate yourself for the Github Metadata plugin to work.
+
+You need to generate a new personal access token on GitHub:
+
+* Go to the [Github Token site](https://github.com/settings/tokens/new)
+* Select the scope `public_repository`, and add a description.
+* Confirm and save the settings. Copy the token you see on the page.
+* Create a `.env` file inside your repository and add your generated `JEKYLL_GITHUB_TOKEN`:
+
+```text
+JEKYLL_GITHUB_TOKEN=0YOUR0GENERATED0TOKEN0
+```
+
+To complete the configuration for the Github Metadata plugin, you also need to change the value of `repository` inside `_config.yml`. After this, you should the Github Metadata plugin should work properly.
+
+For optimal results, you should make sure, that every Github project, you want included on this portfolio, has added following informations on Github:
+
+* Description
+* Homepage link, if there is a live version of it
+* Topics
+
+Example:
+![Github Repository Information Example][github-repo-info]
+
+#### _data/*.yml
+
+Edit files inside `_data` to add information to the portfolio. For documentation, refer to [docs/data.md](https://github.com/longpdo/neumorphism/blob/master/docs/data.md).
+
+#### Particles.js
+
+Edit `assets/particles.json` to customize the landing page backgorund animation. For more information, refer to [this](https://github.com/VincentGarreau/particles.js/#options).
+
+<!-- CONTRIBUTING -->
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/abhinavs/moonwalk.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## Development
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `moonwalk.gemspec` accordingly.
-
-## Acknowledgement
-This theme's original base is [no style please!](https://github.com/riggraz/no-style-please) theme created by  [Riccardo Graziosi](https://riggraz.dev/) - many thanks to him for creating a wonderful theme with nearly no css. 
+<!-- LICENSE -->
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## Other Projects
-If you like Moonwalk, do check out my other projects
-*   [cookie](https://github.com/abhinavs/cookie) - a free landing website boilerplate using Jekyll and Tailwind CSS
-*   [scoop](https://github.com/abhinavs/scoop) - a Sinatra boilerplate project using Corneal, ActiveRecord, Capistrano, Puma & Nginx
-*   [soopr](https://www.soopr.co) - a tool that supports you in content marketing
-*   [apicagent](https://www.apicagent.com) - a FREE API that extracts device details from user-agent string
-*   [pincodr](https://pincodr.apiclabs.com) - a FREE API for Indian pincodes
-*   [humangous](https://www.humangous.co) - create public and private 'working with you' guides
-*   [blockr](https://www.abhinav.co/blockr) - a CLI tool to help you easily block and unblock websites
-*   [microrequests](https://www.abhinav.co/microrequests) - a Python library to help you consume microservice efficiently
+<!-- ACKNOWLEDGEMENTS -->
 
-✨⚡You can read more about me on my [blog](https://www.abhinav.co/about/) or follow me on Twitter - [@abhinav](https://twitter.com/abhinav)
+## Acknowledgements
 
-✨⚡If you like my work, you can [buy me a coffee](https://buymeacoffee.com/abhinavs)                
+* [Font Awesome](https://fontawesome.com/)
+* [Normalize.css](https://necolas.github.io/normalize.css/)
+* Based Preloader on [Codrin Pavel's](https://codepen.io/zerospree/pen/aCjAz) version
+* Typing Carousel by [Gregory Schier](https://codepen.io/gschier/pen/jkivt)
+* Social Button Animation by [Stéphane Lyver](https://codepen.io/wouwi/pen/Lwrmi)
+* Adapted [Damian Jankowski's](https://codepen.io/dolaron/pen/rNadmOE) color palette for the neumorphism design
+* Based Timeline on [Krishna Babu's](https://codepen.io/krishnab/pen/OPwqbW) version
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[product-screenshot]: https://raw.githubusercontent.com/longpdo/neumorphism/master/docs/screenshot.gif
+[github-repo-info]: https://raw.githubusercontent.com/longpdo/neumorphism/master/docs/github-repo-info.png
